@@ -83,6 +83,24 @@
     
     ;
 
+    .carousel-inner {
+        border-radius: 10px;
+        margin-top: 50px;
+    }
+
+    .carousel-item img {
+        width: 100%;
+        height: 500px;
+        /* Sesuaikan dengan tinggi yang diinginkan */
+        object-fit: cover;
+        /* Ini akan menjaga aspek rasio gambar */
+        border-radius: 10px;
+    }
+
+    .container-fluid{
+        border-radius: 10px;
+    }
+
 </style>
 <!-- style end -->
 
@@ -117,17 +135,44 @@
     </nav>
     <!-- navbar end -->
 
+    <!-- indicator start -->
+    <div class="container-fluid mt-5">
+        <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active object-fit-cover" data-bs-interval="1000">
+                    <img src="../img/BG_BeachFestival_Night.jpg" class="d-block" alt="...">
+                </div>
+                <div class="carousel-item object-fit-cover" data-bs-interval="2000">
+                    <img src="../img/BG_BeachFestival_Night.jpg" class="d-block" alt="...">
+                </div>
+                <div class="carousel-item object-fit-cover" data-bs-interval="3000">
+                    <img src="../img/BG_BigPlaza_Night.jpg" class="d-block" alt="...">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+    <!-- indicator end -->
 
+ <!-- text bergerak start -->
     <div class="container">
     <div class="wrapper">
 	<svg>
 		<text x="50%" y="50%" dy=".35em" text-anchor="middle">
-			Berita Terbar
+			Berita Terbaru
             
 		</text>
 	</svg>
 </div>
     </div>
+    <!-- text bergerak end -->
 
 </body>
 
