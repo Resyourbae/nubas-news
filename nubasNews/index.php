@@ -3,38 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Nubas News</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
-    <div class="login-box">
-        <div class="login-header">
-            <header>Login</header>
-        </div>
-        <div class="input-box">
-            <input type="text" class="input-field" placeholder="Username" autocomplete="off" required>
-        </div>
-        <div class="input-box">
-            <input type="email" class="input-field" placeholder="Email" autocomplete="off" required>
-        </div>
-        <div class="input-box">
-            <input type="password" class="input-field" placeholder="Password" autocomplete="off" required>
-        </div>
-        <div class="forgot">
-            <section>
-                <input type="checkbox" id="check">
-                <label for="check">Ingat saya</label>
-            </section>
-            <section>
-                <a href="#">Lupa Password?</a>
-            </section>
-        </div>
-        <div class="input-submit">
-            <button class="input-btn">Login</button>
-        </div>
-        <div class="sign-up-link">
-            <p>Belum Memiliki Akun? <a href="#">Daftar Sekarang</a></p>
+<style>
+    body{
+        background-image: url('./img/BG_BigPlaza_Night.jpg');
+    }
+    .btn{
+        border-radius: 50px;
+    }
+</style>
+<body class="text-center">
+    <div class="container d-flex flex-column justify-content-center align-items-center vh-100">
+        <h1 class="text text-white"><b>NUBAS NEWS</b></h1>
+
+        <div class="d-grid gap-2 w-100" style="max-width: 300px;">
+            <a href="login.php" class="btn btn-dark text-white border" style="background-color:rgb(85, 17, 243);">Login</a>
+            <a href="register.php" class="btn btn-light">Register</a>
         </div>
     </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

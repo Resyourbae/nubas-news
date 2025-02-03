@@ -8,7 +8,7 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-image: url('bg.jpg');
+    background-image: url('./img/BG_BigPlaza_Night.jpg');
     background-position: center;
     background-size: cover;
 }
@@ -110,4 +110,8 @@ section a {
 }
 .sign-up-link p {
     color: #fff;
+}
+
+.form{
+    border-radius: 50px;
 }
