@@ -193,9 +193,11 @@
                             <li><a class="dropdown-item" href="#">Basket</a></li>
                         </ul>
                     </li>
+                    <a href="tentangkami.php">
                     <li class="nav-item">
-                        <a class="nav-link" href="#" style="color:#929ea3; font-weight:bold; font-family:Verdana, Geneva, Tahoma, sans-serif;">Tentang Kami</a>
+                        <div class="nav-link" href="#" style="color:#929ea3; font-weight:bold; font-family:Verdana, Geneva, Tahoma, sans-serif;">Tentang Kami</div>
                     </li>
+                    </a>
                 </ul>
             </div>
         </div>
