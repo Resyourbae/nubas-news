@@ -189,21 +189,23 @@
                 <ul class="navbar-nav">
                     <!-- Menambahkan menu navigasi untuk halaman utama dan kategori -->
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#" style="color:#929ea3; font-weight:bold; font-family:Verdana, Geneva, Tahoma, sans-serif;">Home</a>
+                        <div class="nav-link active" aria-current="page" href="#" style="color:#929ea3; font-weight:bold; font-family:Verdana, Geneva, Tahoma, sans-serif;">Home</div>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color:#929ea3; font-weight:bold;">
+                        <div class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color:#929ea3; font-weight:bold;">
                             Kategori
-                        </a>
+                        </div>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="#">Sepak Bola</a></li>
                             <li><a class="dropdown-item" href="#">Esport</a></li>
                             <li><a class="dropdown-item" href="#">Basket</a></li>
                         </ul>
                     </li>
+                    <a href="tentangkamiuser.php">
                     <li class="nav-item">
                         <a class="nav-link" href="#" style="color:#929ea3; font-weight:bold; font-family:Verdana, Geneva, Tahoma, sans-serif;">Tentang Kami</a>
                     </li>
+                    </a>
                 </ul>
             </div>
         </div>
