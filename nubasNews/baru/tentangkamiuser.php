@@ -176,16 +176,16 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4 team-member">
-                    <img src="" alt="Team Member 1">
-                    <h4>Nama Anggota 1</h4>
+                    <img src="kemal.jpg" alt="Team Member 1">
+                    <h4>M. Ibrahim Kemal</h4>
                 </div>
                 <div class="col-md-4 team-member">
-                    <img src="team2.jpg" alt="Team Member 2">
-                    <h4>Nama Anggota 2</h4>
+                    <img src="lk.jpeg" alt="Team Member 2">
+                    <h4>Resya Anggara</h4>
                 </div>
                 <div class="col-md-4 team-member">
-                    <img src="team3.jpg" alt="Team Member 3">
-                    <h4>Nama Anggota 3</h4>
+                    <img src="pr.jpeg" alt="Team Member 3">
+                    <h4>Agitha Kayla R>P</h4>
                 </div>
             </div>
         </div>
