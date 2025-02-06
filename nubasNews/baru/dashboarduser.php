@@ -276,11 +276,11 @@
                 echo '
                 <div class="boxnews">
                     <div class="img">
-                        <img src="' . $gambarPath . '" alt="' . htmlspecialchars($b['Judul']) . '">
+                        <img src="' . $gambarPath . '" alt="' . ($b['Judul']) . '">
                     </div>
-                    <h1><a href="./?open=detail&id=' . $b['ID'] . '">' . htmlspecialchars($b['Judul']) . '</a></h1>
-                    <p><strong>Kategori:</strong> ' . htmlspecialchars($b['Kategori']) . '</p>
-                    <p class="isi">' . nl2br(htmlspecialchars(substr($b['Isi'], 0, 150))) . '...</p>
+                    <h1><a href="./?open=detail&id=' . $b['ID'] . '">' . ($b['Judul']) . '</a></h1>
+                    <p><strong>Kategori:</strong> ' . ($b['Kategori']) . '</p>
+                    <p class="isi">' . nl2br((substr($b['Isi'], 0, 150))) . '...</p>
                     <a href="./?open=detail&id=' . $b['ID'] . '">Baca Selengkapnya</a>
                 </div>';
             }
