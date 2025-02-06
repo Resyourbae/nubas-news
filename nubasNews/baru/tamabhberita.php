@@ -101,7 +101,7 @@ if (isset($_POST['btnsimpan'])) {
     <form action="" method="POST" enctype="multipart/form-data">  <!-- enctype digunakan untuk upload file -->
         
         <label>Judul</label>
-        <input type="text" name="Judul" class="input-field" value="<?= htmlspecialchars($Judul) ?>" required>  <!-- Input untuk Judul berita -->
+        <input type="text" name="Judul" class="input-field" value="<?= ($Judul) ?>" required>  <!-- Input untuk Judul berita -->
 
         <label>Kategori</label>
         <!-- Dropdown untuk memilih kategori berita -->
@@ -112,11 +112,11 @@ if (isset($_POST['btnsimpan'])) {
         </select>
 
         <label>Isi Berita</label>
-        <textarea name="Isi" class="input-field" required><?= htmlspecialchars($Isi) ?></textarea>  <!-- Input untuk isi berita -->
+        <textarea name="Isi" class="input-field" required><?= ($Isi) ?></textarea>  <!-- Input untuk isi berita -->
 
         <label>Foto</label>
         <?php if (!empty($Foto)) : ?>  <!-- Jika ada gambar yang sudah diupload, tampilkan preview gambar -->
-            <img src="<?= htmlspecialchars($Foto) ?>" class="preview-img" alt="Gambar Berita">
+            <img src="<?= ($Foto) ?>" class="preview-img" alt="Gambar Berita">
         <?php endif; ?>
         <input type="file" name="Foto" class="input-field" accept="image/*">  <!-- Input untuk upload foto -->
 
