@@ -10,27 +10,31 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $password = $_POST['password'];
     $role = $_POST['role'];
 
-    // Mengamankan password dengan meng-hash menggunakan password_hash
-    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-
-    // Membuat query SQL untuk memasukkan data pengguna ke dalam tabel users
-    $sql = "INSERT INTO users (username, email, password, role) VALUES ('$username', '$email', '$hashed_password', '$role')";
-
-    // Mengeksekusi query SQL
-    if ($conn->query($sql) === TRUE) {
-        // Jika query berhasil, tampilkan pesan sukses
-        echo "<script> alert ('Berhasil Membuat Akun');
-        document.location='signup.php'
-        </script>";
-        
-        // Redirect pengguna ke halaman login/signin
-        header("Location: login.php");
+    // Validasi form
+    if (empty($username) || empty($email) || empty($password)) {
+        $error = 'Username, email, dan password tidak boleh kosong';
     } else {
-        // Jika terjadi error saat menjalankan query, tampilkan pesan error
-        echo "Error: " . $sql . "<br>" . $con->error;
-    }
+        // Mengamankan password dengan meng-hash menggunakan password_hash
+        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-    // Menutup koneksi database
-    $con->close();
+        // Membuat query SQL untuk memasukkan data pengguna ke dalam tabel users
+        $sql = "INSERT INTO users (username, email, password, role) VALUES (?, ?, ?, ?)";
+        $stmt = $con->prepare($sql);
+        $stmt->bind_param("ssss", $username, $email, $hashed_password, $role);
+
+        // Mengeksekusi query SQL
+        if ($stmt->execute() === TRUE) {
+            // Jika query berhasil, tampilkan pesan sukses
+            echo "<script> alert ('Berhasil Membuat Akun'); document.location='signup.php' </script>";
+            // Redirect pengguna ke halaman login/signin
+            header("Location: login.php");
+        } else {
+            // Jika terjadi error saat menjalankan query, tampilkan pesan error
+            echo "Error: " . $sql . "<br>" . $con->error;
+        }
+    }
 }
+
+// Menutup koneksi database
+$con->close();
 ?>

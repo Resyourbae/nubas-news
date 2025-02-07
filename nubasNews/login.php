@@ -9,42 +9,49 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $password = $_POST['password'];
     $role = $_POST['role'];
 
-    // Query SQL untuk memeriksa apakah username yang diinput ada di dalam database
-    $sql = "SELECT * FROM users WHERE username='$username' AND role='$role'";
-
-    // Menjalankan query dan menyimpan hasilnya ke dalam variabel $result
-    $result = $con -> query($sql);
-
-    // Mengecek apakah ada data pengguna yang ditemukan
-    if ($result->num_rows > 0) {
-        // Jika ada, ambil data pengguna tersebut dari hasil query
-        $user = $result->fetch_assoc();
-
-        // Verifikasi password: mencocokkan password yang diinput dengan password yang di-hash di database
-        if (password_verify($password, $user['password'])) {
-            // Jika password cocok, arahkan pengguna ke halaman "welcome.php"
-            if ($role === 'admin') {
-                header("Location: admin/admin.php");
-            } elseif ($role === 'user') {
-                header("Location: dashboard.php");
-            }   
-        } else {
-            // Jika password tidak cocok, tampilkan pesan error "Password Salah"
-            echo "<script> alert ('Password Salah!!');
-            document.location=' login.php'
-            </script>";
-        }
+    // Validasi form
+    if (empty($username) || empty($password) || empty($role)) {
+        $error = 'Username, password, dan role tidak boleh kosong';
     } else {
-        // Jika username tidak ditemukan dalam database, tampilkan pesan "Username Tidak Ditemukan"
-        echo "<script> alert ('Username Tidak Ditemukan!!');
-        document.location='login.php'
-        </script>";
-    }
+        // Query SQL untuk memeriksa apakah username yang diinput ada di dalam database
+        $sql = "SELECT * FROM users WHERE username = ? AND role = ?";
+        $stmt = $con->prepare($sql);
+        $stmt->bind_param("ss", $username, $role);
+        $stmt->execute();
+        $result = $stmt->get_result();
 
-    // Menutup koneksi ke database setelah query selesai
-    $con->close();
+        // Mengecek apakah ada data pengguna yang ditemukan
+        if ($result->num_rows > 0) {
+            // Jika ada, ambil data pengguna tersebut dari hasil query
+            $user = $result->fetch_assoc();
+
+            // Verifikasi password: mencocokkan password yang diinput dengan password yang di-hash di database
+            if (password_verify($password, $user['password'])) {
+                // Jika password cocok, arahkan pengguna ke halaman "welcome.php"
+                if ($role === 'admin') {
+                    header("Location: admin/admin.php");
+                    exit(); // Pastikan eksekusi berhenti setelah redirect
+                } elseif ($role === 'user') {
+                    header("Location: dashboard.php");
+                    exit(); // Pastikan eksekusi berhenti setelah redirect
+                }
+            } else {
+                // Jika password tidak cocok, tampilkan pesan error "Password Salah"
+                $error = 'Password salah';
+            }
+        } else {
+            // Jika username tidak ditemukan dalam database, tampilkan pesan "Username Tidak Ditemukan"
+            $error = 'Username tidak ditemukan';
+        }
+    }
 }
+
+// Menutup koneksi ke database setelah query selesai
+$con->close();
 ?>
+
+
+<!-- HTML dan CSS untuk halaman login -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -60,8 +67,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <div class="login-box">
         <div class="login-header">
             <header>Login</header>
+            <!-- Menampilkan pesan error jika ada -->
             <?php if (isset($error)) { echo '<p style="color:red;">' . $error . '</p>'; } ?>
         </div>
+        <!-- form start -->
         <form method="POST">
         <div class="input-box">
             <input type="text" name="username" id="username" class="input-field" placeholder="Username" autocomplete="off" required>
@@ -71,17 +80,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </div>
         
         <select class="form form-select mb-3" name="role" required>
-                <option selected></option>
-                <option value="admin">Admin</option>
-                <option value="user">User</option>
-            </select>
+            <option value="" selected>Pilih Role</option>
+            <option value="admin">Admin</option>
+            <option value="user">User</option>
+        </select>
+
         <div class="input-submit">
             <button class="input-btn" type="submit">Login</button>
+            <button class="input-btn mt-3" type="button"><a style="text-decoration: none; color: #fff;" href="register.php">Register</a></button>
         </div>
+
         <div class="sign-up-link">
             <p>&copy; copyright by kemal,resya,agitha 2025 </p>
         </div>
     </div>
     </form>
+    <!-- form end -->
 </body>
 </html>
+

@@ -67,7 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <option value="user">User</option>
             </select>
             <div class="input-submit">
-            <button class="input-btn" type="submit">Login</button>
+            <button class="input-btn" type="submit">Daftar</button>
         </div>
         <div class="sign-up-link">
             <p>&copy; copyright by kemal,resya,agitha 2025 </p>
